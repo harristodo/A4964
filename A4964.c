@@ -2,7 +2,7 @@
 //			INCLUDE HEAER FILE					//
 //==============================================//
 #include "system.h"
-
+/// FOR TEST
 //----------------------------------------------
 #define oCSL                STRn_SetLow()
 #define oCSH                STRn_SetHigh()
@@ -11,7 +11,7 @@
 #define SPI_ExchangeByte(x) SPI1_ExchangeByte(x)
 
 //==============================================//
-//				¼È¦s¾¹©w¸q						//
+//				ï¿½È¦sï¿½ï¿½ï¿½wï¿½q						//
 //==============================================//
 U16 regConfig[32] = {0};
 U16 wrData = 0;
@@ -19,7 +19,7 @@ U16 receiveData = 0;
 
 
 //==============================================//
-//				¨ç¦¡­ì«¬«Å§i					//
+//				ï¿½ç¦¡ï¿½ì«¬ï¿½Å§i					//
 //==============================================//
 U8 configStopOnFail (U8 esf);
 U8 configVLRvoltage (U8 vlr);
@@ -295,7 +295,7 @@ U32 A4964_ReadBack_Select (U8 rSel)
         break;
     case RBS_MOTOR_SPEED:
         tmp = receiveData;
-        tmp *= 2;       // fE = n ¡Ñ fRES (0.2Hz)
+        tmp *= 2;       // fE = n ï¿½ï¿½ fRES (0.2Hz)
         tmp *= (60/4);  // fE*60/Pole-pairs (rpm)
         break;
     case RBS_CURRENT:
@@ -399,10 +399,10 @@ void A4964_init2 (void)
     // SR_3_2HZ -  (0,384)Hz - (406.4 ,6550.4)Hz
     //----------------------------------------------
     // -- Underspeed (Low-Speed) Threshold
-    // fSL = 8 ¡Ñ n ¡Ñ fRES (Hz)
+    // fSL = 8 ï¿½ï¿½ n ï¿½ï¿½ fRES (Hz)
     //----------------------------------------------
     // -- Underspeed (High-Speed) Threshold
-    // fSH = [127 + (n ¡Ñ 128)] ¡Ñ fRES (Hz)
+    // fSH = [127 + (n ï¿½ï¿½ 128)] ï¿½ï¿½ fRES (Hz)
 
     configSpeed(SR_0_4HZ, 0, 820);
 
@@ -558,7 +558,7 @@ void A4964_init2 (void)
     // SA_20
     //------------------------------------------
     // -- Dead Time
-    // tDEAD = n ¡Ñ 50 ns
+    // tDEAD = n ï¿½ï¿½ 50 ns
     // n = 0~63 , tDEAD is 100 ns to 3.15 us. 
     // input range : 100 ~ 3150
     configBridge(SA_20, 600); // gain, dead time ns
@@ -572,11 +572,11 @@ void A4964_init2 (void)
     // CUR_TURN_OFF
     //----------------------------------------------
     // -- Turn-On/Off Current 1
-    // n = 0~15 ,The range of IR1/IF1 is ¡V5(5) mA to ¡V75(75) mA. 0 will set the gate drive to switch mode
+    // n = 0~15 ,The range of IR1/IF1 is ï¿½V5(5) mA to ï¿½V75(75) mA. 0 will set the gate drive to switch mode
     // input range : 0 ~ 75 , 0 : switch mode
     //------------------------------------------
     // IR2[3:0](b4-b1) Turn-On Current 2
-    // n = 0~15 ,The range of IR2(IF2) is ¡V5(5) mA to ¡V75(75) mA. 0 will set the gate drive to switch mode
+    // n = 0~15 ,The range of IR2(IF2) is ï¿½V5(5) mA to ï¿½V75(75) mA. 0 will set the gate drive to switch mode
     // input range : 0 ~ 75 , 0 : switch mode
 
     configGateCurrent(CUR_TURN_OFF, 0, 0); // drive turn-off current1, current2: mA, 0=switching
@@ -758,7 +758,7 @@ void A4964_init2 (void)
     // KIP_GAIN_8
     //------------------------------------------------------
     // -- PHASE ADVANCE
-    // n = 0 ~ 63 , The range of £cADV is 0 to 43.4¢X and 60¢X
+    // n = 0 ~ 63 , The range of ï¿½cADV is 0 to 43.4ï¿½X and 60ï¿½X
     // input range : 0 ~ 600
     //------------------------------------------------------
     configPhaseAdvance(PAM_AUTO, KIP_GAIN_4, 0);
@@ -769,7 +769,7 @@ void A4964_init2 (void)
     //------------------------------------------------------
     // configBEMFDetectWindow(degreesX10);
     //------------------------------------------------------
-    // The range of £cBW is 1.4¢X to 43.4¢X and 60¢X.
+    // The range of ï¿½cBW is 1.4ï¿½X to 43.4ï¿½X and 60ï¿½X.
     // input range: 0 ~ 600
 
     configBEMFDetectWindow(56);    // degrees(5.6)*10
@@ -1166,8 +1166,8 @@ U8 configLIN (U8 len)
 // GTS(b7) Go to Sleep Command
 // 0    No change in state D
 // 1    No change in state
-// 1¡÷0 No change in state
-// 0¡÷1 Enter sleep state if enabled
+// 1ï¿½ï¿½0 No change in state
+// 0ï¿½ï¿½1 Enter sleep state if enabled
 //------------------------------------------
 // return spi write success of failed
 //==============================================
@@ -1369,12 +1369,12 @@ U8 configRUN (U8 run)
 // Register 21: Speed Control Loop Configuration
 //----------------------------------------------
 // SGL[4:0](b9-b5) Speed Control Acceleration Limit
-// KSL = 6.3 + (n ¡Ñ 6.4) Hz
+// KSL = 6.3 + (n ï¿½ï¿½ 6.4) Hz
 // n = 0~31 , The range of KSL is 6.3 Hz to 204.7 Hz.
 // input range : 63 ~ 2047
 //----------------------------------------------
 // SG[3:0](b4-b1) Speed Control Gain
-// KS= 1 + (n ¡Ñ 2)
+// KS= 1 + (n ï¿½ï¿½ 2)
 // n = 0~15 ,The range of KS is 1 to 31.
 // input range : 1 ~ 31
 //------------------------------------------
@@ -1388,7 +1388,7 @@ U8 configSpeedAccel (U16 accHzX10,U8 gain)
     wData = regConfig[r21_SPEED_ACC];
     //----------------------------------------------
     // SGL[4:0](b9-b5) Speed Control Acceleration Limit
-    // KSL = 6.3 + (n ¡Ñ 6.4) Hz
+    // KSL = 6.3 + (n ï¿½ï¿½ 6.4) Hz
     // n = 0~31 , The range of KSL is 6.3 Hz to 204.7 Hz.
     if (accHzX10 < 63)
         nSGL = 0;
@@ -1403,7 +1403,7 @@ U8 configSpeedAccel (U16 accHzX10,U8 gain)
     
     //----------------------------------------------
     // SG[3:0](b4-b1) Speed Control Gain
-    // KS= 1 + (n ¡Ñ 2)
+    // KS= 1 + (n ï¿½ï¿½ 2)
     // n = 0~15 ,The range of KS is 1 to 31.
     if (gain <= 1)
         nSG = 0;
@@ -1502,10 +1502,10 @@ U8 configSpeedFlags (U8 dv,U8 df)
 // Register 23: Speed Control Loop Configuration
 //----------------------------------------------
 // SL[3:0](b8-b5) Underspeed (Low-Speed) Threshold
-// fSL = 8 ¡Ñ n ¡Ñ fRES (Hz)
+// fSL = 8 ï¿½ï¿½ n ï¿½ï¿½ fRES (Hz)
 //----------------------------------------------
 // SH[3:0](b4-b1) Underspeed (High-Speed) Threshold
-// fSH = [127 + (n ¡Ñ 128)] ¡Ñ fRES (Hz)
+// fSH = [127 + (n ï¿½ï¿½ 128)] ï¿½ï¿½ fRES (Hz)
 //------------------------------------------
 // return spi write success of failed
 //==============================================
@@ -1536,7 +1536,7 @@ U8 configSpeed (U8 res, U16 lthr, U16 hthr)
     fRES = 2^res;
     //------------------------------------------
     // SL[3:0](b8-b5) Underspeed (Low-Speed) Threshold
-    // fSL = 8 ¡Ñ n ¡Ñ fRES (Hz)
+    // fSL = 8 ï¿½ï¿½ n ï¿½ï¿½ fRES (Hz)
     nSL = (lthr*10)/fRES/8;
     if (nSL >= 15)
         nSL = 15;
@@ -1544,7 +1544,7 @@ U8 configSpeed (U8 res, U16 lthr, U16 hthr)
     wData |= (nSL<<5);
     //----------------------------------------------
     // SH[3:0](b4-b1) Underspeed (High-Speed) Threshold
-    // fSH = [127 + (n ¡Ñ 128)] ¡Ñ fRES (Hz)
+    // fSH = [127 + (n ï¿½ï¿½ 128)] ï¿½ï¿½ fRES (Hz)
     nSH = (hthr*10)/fRES/8;
     if (nSH >= 15)
         nSH = 15;
@@ -1605,7 +1605,7 @@ U8 configSenseMaxThresh (U8 mit)
 // U8 configVDSOvervoltage(U16 mvX100) -- Overvoltage Threshold
 //----------------------------------------------
 // VT[5:0](b6-b1) VDS Overvoltage Threshold
-// VDST = n ¡Ñ 50 mV
+// VDST = n ï¿½ï¿½ 50 mV
 // n = 0~63
 // VDST = 0 ~ 3150mV
 //----------------------------------------------
@@ -1621,7 +1621,7 @@ U8 configVDSOvervoltage(U16 mv)
     wData = regConfig[r07_VDS_MAXI_THRESHOLD];
     //------------------------------------------
     // VT[5:0](b6-b1) VDS Overvoltage Threshold
-    // VDST = n ¡Ñ 50 mV , The range of VDST is 0 to 3.15 V.
+    // VDST = n ï¿½ï¿½ 50 mV , The range of VDST is 0 to 3.15 V.
     if (mv >= 3150)
         nVT = 63;
     else
@@ -1648,7 +1648,7 @@ U8 configVDSOvervoltage(U16 mv)
 // 1:Blank
 //----------------------------------------------
 // VQT[5:0](b6-b1) VDS Qualify Time
-// tVDQ = n ¡Ñ 50 ns
+// tVDQ = n ï¿½ï¿½ 50 ns
 // n = 0~63
 // tVDQ is 600 ns to 3150 ns
 //----------------------------------------------
@@ -1670,7 +1670,7 @@ U8 configVDSFaultQualifier(U8 mod,U16 ns)
         wData |=  (1<<8);
     //----------------------------------------------
     // VQT[5:0](b6-b1) VDS Qualify Time
-    // tVDQ = n ¡Ñ 50 ns
+    // tVDQ = n ï¿½ï¿½ 50 ns
     // n = 0~63 ,  tVDQ is 600 ns to 3150 ns
     if (ns <= 600)
         nVQT = 0;
@@ -1714,8 +1714,8 @@ U8 configVDSFaultQualifier(U8 mod,U16 ns)
 // 1: Edge aligned
 //------------------------------------------
 // PW[5:0](b6-b1) Bridge PWM Fixed Period
-// tPW = 20.10 £gs + (n ¡Ñ 0.8 £gs) when PMD = 0
-// tPW = 20.05 £gs + (n ¡Ñ 0.8 £gs) when PMD = 1
+// tPW = 20.10 ï¿½gs + (n ï¿½ï¿½ 0.8 ï¿½gs) when PMD = 0
+// tPW = 20.05 ï¿½gs + (n ï¿½ï¿½ 0.8 ï¿½gs) when PMD = 1
 // n = 0~63 , This is equivalent to 50 kHz to 14.2 kHz
 // input range : 14000 ~ 50000
 //------------------------------------------
@@ -1743,8 +1743,8 @@ U8 configPWM(U8 mod,U8 pmd,U16 freq)
         wData |= (1<<7);   
     //------------------------------------------
     // PW[5:0](b6-b1) Bridge PWM Fixed Period
-    // tPW = 20.10 £gs + (n ¡Ñ 0.8 £gs) when PMD = 0
-    // tPW = 20.05 £gs + (n ¡Ñ 0.8 £gs) when PMD = 1
+    // tPW = 20.10 ï¿½gs + (n ï¿½ï¿½ 0.8 ï¿½gs) when PMD = 0
+    // tPW = 20.05 ï¿½gs + (n ï¿½ï¿½ 0.8 ï¿½gs) when PMD = 1
     // n = 0~63 , This is equivalent to 50 kHz to 14.2 kHz
     tmp = (U32)100000000L/(U32)freq;
     if (pmd == 0)
@@ -1787,8 +1787,8 @@ U8 configPWM(U8 mod,U8 pmd,U16 freq)
 // Register 1: PWM Configuration
 //----------------------------------------------
 // DP[2:0](b9-b7) PWM Dither Step Period
-// tPW = ¡V0.2 £gs ¡V (n ¡Ñ 0.2 £gs)
-// n = 0~7 ,The range of t?PW is ¡V0.2 us to ¡V1.6 us
+// tPW = ï¿½V0.2 ï¿½gs ï¿½V (n ï¿½ï¿½ 0.2 ï¿½gs)
+// n = 0~7 ,The range of t?PW is ï¿½V0.2 us to ï¿½V1.6 us
 //------------------------------------------
 // DD[1:0](b6-b5) PWM Dither Dwell Time
 // 00: 1 ms
@@ -1849,7 +1849,7 @@ U8 configDither(U8 ditherTime,U8 dwellTime,U8 stepCnt)
 // 11: 20
 //------------------------------------------
 // DT[5:0](b6-b1) Dead Time
-// tDEAD = n ¡Ñ 50 ns
+// tDEAD = n ï¿½ï¿½ 50 ns
 // n = 0~63 , tDEAD is 100 ns to 3.15 ?s. 
 //------------------------------------------
 // return spi write success of failed
@@ -1866,7 +1866,7 @@ U8 configBridge(U8 gain, U16 dt)
     wData |= (gain<<7);
     //------------------------------------------
     // DT[5:0](b6-b1) Dead Time
-    // tDEAD = n ¡Ñ 50 ns
+    // tDEAD = n ï¿½ï¿½ 50 ns
     // n = 0~63 , tDEAD is 100 ns to 3.15 ?s. 
     nDT = dt/50;
     if (nDT >= 63)
@@ -1898,22 +1898,22 @@ U8 configBridge(U8 gain, U16 dt)
 // Register 3: Gate Drive Configuration
 //----------------------------------------------
 // IR1[3:0](b8-b5) Turn-On Current 1
-// IR1 = n ¡Ñ ¡V5 mA
-// n = 0~15 ,The range of IR1 is ¡V5 mA to ¡V75 mA. 0 will set the gate drive to switch mode
+// IR1 = n ï¿½ï¿½ ï¿½V5 mA
+// n = 0~15 ,The range of IR1 is ï¿½V5 mA to ï¿½V75 mA. 0 will set the gate drive to switch mode
 //------------------------------------------
 // IR2[3:0](b4-b1) Turn-On Current 2
-// IR1 = n ¡Ñ ¡V5 mA
-// n = 0~15 ,The range of IR1 is ¡V5 mA to ¡V75 mA. 0 will set the gate drive to switch mode
+// IR1 = n ï¿½ï¿½ ï¿½V5 mA
+// n = 0~15 ,The range of IR1 is ï¿½V5 mA to ï¿½V75 mA. 0 will set the gate drive to switch mode
 //----------------------------------------------
 // Register 4: Gate Drive Configuration
 //----------------------------------------------
 // IF1[3:0](b8-b5) Turn-Off Current 1
-// IF1 = n ¡Ñ 5 mA
+// IF1 = n ï¿½ï¿½ 5 mA
 // The range of IF1 is 5 mA to 75 mA.
 // n = 0~15 ,The range of IF1 is 5 mA to 75 mA. 0 will set the gate drive to switch mode
 //----------------------------------------------
 // IF2[3:0](b4-b1) Turn-Off Current 2
-// IF2 = n ¡Ñ 5 mA
+// IF2 = n ï¿½ï¿½ 5 mA
 // The range of IF2 is 5 mA to 75 mA.
 // n = 0~15 ,The range of IF2 is 5 mA to 75 mA. 0 will set the gate drive to switch mode
 //----------------------------------------------
@@ -1957,11 +1957,11 @@ U8 configGateCurrent(U8 gate, U8 cur1, U8 cur2)
 // Register 5: Gate Drive Configuration
 //----------------------------------------------
 // TRS[3:0](b9-b5) Slew Control Turn-On Time
-// tRS = n ¡Ñ 50 ns
+// tRS = n ï¿½ï¿½ 50 ns
 // n = 0~15 ,The range of tRS is 0 ns to 750 ns.
 //------------------------------------------
 // TFS[3:0](b4-b1) Slew Control Turn-Off Time
-// tFS = n ¡Ñ 50 ns
+// tFS = n ï¿½ï¿½ 50 ns
 // n = 0~15 ,The range of tFS is 0 ns to 750 ns.
 //------------------------------------------
 // scale (0~100)%
@@ -2001,7 +2001,7 @@ U8 configGateSlew(U16 nsOn, U16 nsOff)
 // U8 configCurrentLimit (U16 ns,U8 scale)
 //----------------------------------------------
 // OBT[4:0](b9-b5) Current Limit Blank Time
-// tOCB = (n + 2) ¡Ñ 200 ns,0, 1, 2, and 3 will set the blank time to 1 us.
+// tOCB = (n + 2) ï¿½ï¿½ 200 ns,0, 1, 2, and 3 will set the blank time to 1 us.
 // The range of tOCB is 1 us to 6.6 us
 // blank time ns (1000ns~6600ns)
 //----------------------------------------------
@@ -2019,7 +2019,7 @@ U8 configCurrentLimit (U16 ns,U8 scale)
     wData = regConfig[r06_CURRENT_LIMIT];
     //------------------------------------------
     // OBT[4:0](b9-b5) Current Limit Blank Time
-    // tOCB = (n + 2) ¡Ñ 200 ns,0, 1, 2, and 3 will set the blank time to 1 ?s.
+    // tOCB = (n + 2) ï¿½ï¿½ 200 ns,0, 1, 2, and 3 will set the blank time to 1 ?s.
     if (ns<=1000)
         nOBT = 0;
     else
@@ -2059,12 +2059,12 @@ U8 configCurrentLimit (U16 ns,U8 scale)
 // Register 15: Startup Configuration
 //----------------------------------------------
 // HT[3:0](b9-b6) Alignment (Hold) Time
-// tHOLD = n ¡Ñ 200 ms
+// tHOLD = n ï¿½ï¿½ 200 ms
 // n = 0~31 , tHOLD is 0 to 3000 ms.
 // input range: 0 ~ 3000
 //----------------------------------------------
 // HD[4:0](b5-b1) Peak PWM Duty During Alignment
-// DH = (n + 1) ¡Ñ 3.125%
+// DH = (n + 1) ï¿½ï¿½ 3.125%
 // n = 0~31 ,  DH is 3.125% to 100%
 // input range: 0 ~ 100
 //----------------------------------------------
@@ -2080,7 +2080,7 @@ U8 configStartupAlign(U16 ms,U8 dutyp)
     wData = regConfig[r15_STARTUP_ALIGNMENT];
     //------------------------------------------
     // HT[3:0](b9-b6) Alignment (Hold) Time
-    // tHOLD = n ¡Ñ 200 ms
+    // tHOLD = n ï¿½ï¿½ 200 ms
     // n = 0~15 , tHOLD is 0 to 3000 ms.
     if (ms >= 3000)
         ms = 3000;
@@ -2091,7 +2091,7 @@ U8 configStartupAlign(U16 ms,U8 dutyp)
     
     //----------------------------------------------
     // HD[4:0](b5-b1) Peak PWM Duty During Alignment
-    // DH = (n + 1) ¡Ñ 3.125%
+    // DH = (n + 1) ï¿½ï¿½ 3.125%
     // n = 0~31 ,  DH is 3.125% to 100%
     if (dutyp >= 100)
         nHD = 31;
@@ -2126,7 +2126,7 @@ U8 configStartupAlign(U16 ms,U8 dutyp)
 // 1: Allow restart after loss of sync
 //----------------------------------------------
 // KM[3:0](b6-b3) Motor Constant (Ratio Between Speed and BEMF)
-// KM = 0.3 + (n ¡Ñ 0.05)
+// KM = 0.3 + (n ï¿½ï¿½ 0.05)
 // n = 0~15 , KM is 0.3 to 1.05
 // input value = 30~105
 //----------------------------------------------
@@ -2161,7 +2161,7 @@ U8 configStartupMotor(U8 coast,U8 rsc,U16 km,U8 rampt)
         wData &= ~(1<<8);
     //----------------------------------------------
     // KM[3:0](b6-b3) Motor Constant (Ratio Between Speed and BEMF)
-    // KM = 0.3 + (n ¡Ñ 0.05)
+    // KM = 0.3 + (n ï¿½ï¿½ 0.05)
     // n = 0~15 , KM is 0.3 to 1.05
     // input value = 30~105
     if (km >= 105)
@@ -2199,12 +2199,12 @@ U8 configStartupMotor(U8 coast,U8 rsc,U16 km,U8 rampt)
 // 1: Windmilling enabled
 //----------------------------------------------
 // WMF[2:0](b7-b5) Minimum Windmill Detection Frequency
-// fWM = 0.4 + (n ¡Ñ 3.2) Hz
+// fWM = 0.4 + (n ï¿½ï¿½ 3.2) Hz
 // n = 0~7 , fWM is 0.4 Hz to 22.8 Hz.
 // input range : 4~228
 //----------------------------------------------
 // WBD[3:0](b4-b1) Duty Cycle During Windmill Braking
-// DWB = (n + 1) ¡Ñ 6.25%
+// DWB = (n + 1) ï¿½ï¿½ 6.25%
 // n = 0~15 , DWB is 6.25% to 100%.
 // input value : 0 ~ 100
 //----------------------------------------------
@@ -2226,7 +2226,7 @@ U8 configWindmill(U8 mod,U8 freq,U8 dutyp)
         wData &= ~(1<<8);
     //----------------------------------------------
     // WMF[2:0](b7-b5) Minimum Windmill Detection Frequency
-    // fWM = 0.4 + (n ¡Ñ 3.2) Hz
+    // fWM = 0.4 + (n ï¿½ï¿½ 3.2) Hz
     // n = 0~7 , fWM is 0.4 Hz to 22.8 Hz.
     // input range : 4~228
     
@@ -2241,7 +2241,7 @@ U8 configWindmill(U8 mod,U8 freq,U8 dutyp)
     wData |= (nWMF<<5);
     //----------------------------------------------
     // WBD[3:0](b4-b1) Duty Cycle During Windmill Braking
-    // DWB = (n + 1) ¡Ñ 6.25%
+    // DWB = (n + 1) ï¿½ï¿½ 6.25%
     // n = 0~15 , DWB is 6.25% to 100%.
     // input value : 0 ~ 100
     tmp = (U16)dutyp*100;
@@ -2278,24 +2278,24 @@ U8 configWindmill(U8 mod,U8 freq,U8 dutyp)
 // Register 18: Startup Configuration
 //----------------------------------------------
 // SF2[3:0](b8-b5) Start Ramp Final Frequency
-// fS2 = 10 + (n ¡Ñ 2.5) Hz
+// fS2 = 10 + (n ï¿½ï¿½ 2.5) Hz
 // n = 0~15 , The range of fS2 is 10 Hz to 47.5 Hz
 // input range: 100~475
 //----------------------------------------------
 // SF1[3:0](b4-b1) Start Ramp Initial Frequency
-// fS1 = 0.5 + (n ¡Ñ 0.5) Hz
+// fS1 = 0.5 + (n ï¿½ï¿½ 0.5) Hz
 // n = 0~15 , The range of fS1 is 0.5 Hz to 8 Hz
 // input range: 5~80
 //----------------------------------------------
 // Register 19: Startup Configuration
 //----------------------------------------------
 // SD2[3:0](b8-b5) Start Ramp Final Duty Cycle
-// DS2 = (n + 1) ¡Ñ 6.25%
+// DS2 = (n + 1) ï¿½ï¿½ 6.25%
 // n = 0~15 , The range of DS2 is 6.25% to 100%
 // input range: 0 ~ 100
 //----------------------------------------------
 // SD1[3:0](b4-b1) Start Ramp Initial Duty Cycle
-// DS1 = (n + 1) ¡Ñ 6.25%
+// DS1 = (n + 1) ï¿½ï¿½ 6.25%
 // n = 0~15 , The range of DS1 is 6.25% to 100%
 // input range: 0 ~ 100
 //----------------------------------------------
@@ -2311,7 +2311,7 @@ U8 configRamp(U16 startFreqX10,U8 startDuty,U16 endFreqX10, U8 endDuty)
     wData = regConfig[r18_RAMP_FREQ];
     //----------------------------------------------
     // SF2[3:0](b8-b5) Start Ramp Final Frequency
-    // fS2 = 10 + (n ¡Ñ 2.5) Hz
+    // fS2 = 10 + (n ï¿½ï¿½ 2.5) Hz
     // n = 0~15 , The range of fS2 is 10.0 Hz to 47.5 Hz
     if (endFreqX10 <= 100)
         nSF2 = 0;
@@ -2324,7 +2324,7 @@ U8 configRamp(U16 startFreqX10,U8 startDuty,U16 endFreqX10, U8 endDuty)
     wData |= (nSF2<<5);
     //----------------------------------------------
     // SF1[3:0](b4-b1) Start Ramp Initial Frequency
-    // fS1 = 0.5 + (n ¡Ñ 0.5) Hz
+    // fS1 = 0.5 + (n ï¿½ï¿½ 0.5) Hz
     // n = 0~15 , The range of fS1 is 0.5 Hz to 8 Hz
     if (startFreqX10 <= 5)
         nSF1 = 0;
@@ -2348,7 +2348,7 @@ U8 configRamp(U16 startFreqX10,U8 startDuty,U16 endFreqX10, U8 endDuty)
     wData = regConfig[r19_RAMP_DUTY];
     //----------------------------------------------
     // SD2[3:0](b8-b5) Start Ramp Final Duty Cycle
-    // DS2 = (n + 1) ¡Ñ 6.25%
+    // DS2 = (n + 1) ï¿½ï¿½ 6.25%
     // n = 0~15 , The range of DS2 is 6.25% to 100%
     tmp = (U16)endDuty*100;
     
@@ -2364,7 +2364,7 @@ U8 configRamp(U16 startFreqX10,U8 startDuty,U16 endFreqX10, U8 endDuty)
     
     //----------------------------------------------
     // SD1[3:0](b4-b1) Start Ramp Initial Duty Cycle
-    // DS1 = (n + 1) ¡Ñ 6.25%
+    // DS1 = (n + 1) ï¿½ï¿½ 6.25%
     // n = 0~15 , The range of DS1 is 6.25% to 100%
     tmp = (U16)startDuty*100;
     
@@ -2395,7 +2395,7 @@ U8 configRamp(U16 startFreqX10,U8 startDuty,U16 endFreqX10, U8 endDuty)
 //----------------------------------------------
 // STS[3:0](b8-b5) Start Ramp Step Time
 // tSS = 10 ms     |n=0
-// tSS = n ¡Ñ 20 ms |n=1..15 , 
+// tSS = n ï¿½ï¿½ 20 ms |n=1..15 , 
 // n = 0~15 ,The range of tSTS is 10 ms to 300 ms.
 // intpu ragne : 10 ~ 300
 //----------------------------------------------
@@ -2424,7 +2424,7 @@ U8 configRampStep(U16 stepms, U8 stepfreq)
     //----------------------------------------------
     // STS[3:0](b8-b5) Start Ramp Step Time
     // tSS = 10 ms     |n=0
-    // tSS = n ¡Ñ 20 ms |n=1..15 , 
+    // tSS = n ï¿½ï¿½ 20 ms |n=1..15 , 
     // n = 0~15 ,The range of tSTS is 10 ms to 300 ms.
     if (stepms <= 10)
         nSTS = 0;
@@ -2464,9 +2464,9 @@ U8 configRampStep(U16 stepms, U8 stepfreq)
 // U8 configBEMFDetectWindow(U16 degX10);
 //----------------------------------------------
 // BW[4:0](b5-b1) BEMF Detection Window
-// £cBW = (n + 1) ¡Ñ 1.4¢X(elec) |n=0..30
-// £cBW = 60¢X(elec)            |n=31
-// n = 0~31 , The range of £cBW is 1.4¢X to 43.4¢X and 60¢X.
+// ï¿½cBW = (n + 1) ï¿½ï¿½ 1.4ï¿½X(elec) |n=0..30
+// ï¿½cBW = 60ï¿½X(elec)            |n=31
+// n = 0~31 , The range of ï¿½cBW is 1.4ï¿½X to 43.4ï¿½X and 60ï¿½X.
 // input range: 0 ~ 600
 //----------------------------------------------
 // return : 
@@ -2481,9 +2481,9 @@ U8 configBEMFDetectWindow(U16 degX10)
     wData = regConfig[r13_BEMF_WINDOW];
     //----------------------------------------------
     // BW[4:0](b5-b1) BEMF Detection Window
-    // £cBW = (n + 1) ¡Ñ 1.4¢X(elec) |n=0..30
-    // £cBW = 60¢X(elec)            |n=31
-    // n = 0~31 , The range of £cBW is 1.4¢X to 43.4¢X and 60¢X.
+    // ï¿½cBW = (n + 1) ï¿½ï¿½ 1.4ï¿½X(elec) |n=0..30
+    // ï¿½cBW = 60ï¿½X(elec)            |n=31
+    // n = 0~31 , The range of ï¿½cBW is 1.4ï¿½X to 43.4ï¿½X and 60ï¿½X.
     if (degX10 >= 434)
         nBW = 31;
     else
@@ -2695,9 +2695,9 @@ U8 configCommTransientPow2(S8 np,S8 ni)
 // 11 8
 //----------------------------------------------
 // PA[5:0](b6-b1) Phase Advance
-// £cADV = n ¡Ñ 0.7¢X(elec) |n=0..62
-// £cADV = 60¢X(elec)      |n=63
-// n = 0 ~ 63 , The range of £cADV is 0 to 43.4¢X and 60¢X
+// ï¿½cADV = n ï¿½ï¿½ 0.7ï¿½X(elec) |n=0..62
+// ï¿½cADV = 60ï¿½X(elec)      |n=63
+// n = 0 ~ 63 , The range of ï¿½cADV is 0 to 43.4ï¿½X and 60ï¿½X
 // input range : 0 ~ 600
 //----------------------------------------------
 // return : 
@@ -2724,9 +2724,9 @@ U8 configPhaseAdvance(U8 mod, U8 gain,U16 degX10)
     wData |= (gain<<7);
     //----------------------------------------------
     // PA[5:0](b6-b1) Phase Advance
-    // £cADV = n ¡Ñ 0.7¢X(elec) |n=0..62
-    // £cADV = 60¢X(elec)      |n=63
-    // n = 0 ~ 63 , The range of £cADV is 0 to 43.4¢X and 60¢X
+    // ï¿½cADV = n ï¿½ï¿½ 0.7ï¿½X(elec) |n=0..62
+    // ï¿½cADV = 60ï¿½X(elec)      |n=63
+    // n = 0 ~ 63 , The range of ï¿½cADV is 0 to 43.4ï¿½X and 60ï¿½X
     if (degX10 >= 434)
         nPA = 63;
     else
