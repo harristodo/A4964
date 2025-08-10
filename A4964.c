@@ -2,7 +2,9 @@
 //			INCLUDE HEAER FILE					//
 //==============================================//
 #include "system.h"
-/// FOR TEST
+#include "A4964.h"
+
+// FOR TEST 
 //----------------------------------------------
 #define oCSL                STRn_SetLow()
 #define oCSH                STRn_SetHigh()
